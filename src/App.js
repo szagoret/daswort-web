@@ -36,17 +36,18 @@ const MobileContainer = ({children}) => {
         <Responsive as={Sidebar.Pushable} {...Responsive.onlyMobile}>
             <Sidebar as={Menu}
                      animation='overlay'
-                     vertical visible={isOpen}
+                     vertical
+                     visible={isOpen}
                      onHide={handleSidebarHide}>
                 {MenuItems}
             </Sidebar>
             <Sidebar.Pusher dimmed={isOpen}>
-                <Container>
+                <Container fluid>
                     <Button onClick={handleToggle} basic icon>
                         <Icon name='sidebar'/>
                     </Button>
                 </Container>
-                <Container>
+                <Container fluid>
                     {children}
                 </Container>
             </Sidebar.Pusher>
@@ -92,18 +93,18 @@ const Header = () => (
 const PageHeader = () => (
     <Container fluid style={{paddingBottom: '10px'}}>
         <Segment>
-            <Grid>
-                <Grid.Column mobile={2} tablet={2} computer={1}>
+            <Grid container>
+                <Grid.Column only="large screen" tablet={2} computer={1}>
                     <Image size='mini' src='logo.svg'/>
                 </Grid.Column>
-                <Grid.Column mobile={2} tablet={3} computer={2} verticalAlign="middle">
+                <Grid.Column mobile={4} tablet={3} computer={2} verticalAlign="middle">
                     <h4>Noten Archiv</h4>
                 </Grid.Column>
                 <Grid.Column mobile={8} tablet={9} computer={6}>
                     <MainSearch/>
                 </Grid.Column>
                 <Grid.Column mobile={2} tablet={2} computer={2} floated="right" textAlign="right">
-                    <Button as="a" basic icon="user" />
+                    <Button as="a" basic icon="user"/>
                 </Grid.Column>
             </Grid>
         </Segment>
@@ -114,22 +115,22 @@ const Content = () => (
     <Container fluid style={{padding: '20px'}}>
         <Grid centered>
             <Grid.Row>
-            <Grid.Column>
-                <Container>1</Container>
-            </Grid.Column>
-            <Grid.Column>
-                <Container>1</Container>
-                <Container>2</Container>
-            </Grid.Column>
-            <Grid.Column>
+                <Grid.Column>
+                    <Container>1</Container>
+                </Grid.Column>
+                <Grid.Column>
+                    <Container>1</Container>
+                    <Container>2</Container>
+                </Grid.Column>
+                <Grid.Column>
+                    <Container>1</Container>
+                    <Container>2</Container>
+                    <Container>3</Container>
+                </Grid.Column> <Grid.Column>
                 <Container>1</Container>
                 <Container>2</Container>
                 <Container>3</Container>
-            </Grid.Column> <Grid.Column>
-            <Container>1</Container>
-            <Container>2</Container>
-            <Container>3</Container>
-        </Grid.Column>
+            </Grid.Column>
             </Grid.Row>
             <Grid.Row>
                 <Grid.Column>
