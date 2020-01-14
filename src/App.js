@@ -43,7 +43,7 @@ const MobileContainer = ({children}) => {
             </Sidebar>
             <Sidebar.Pusher dimmed={isOpen}>
                 <PageHeader>
-                    <Grid.Column width={2}>
+                    <Grid.Column mobile={3}>
                         <Button onClick={handleToggle} basic icon>
                             <Icon name='sidebar'/>
                         </Button>
@@ -90,10 +90,10 @@ const PageHeader = ({children}) => (
             <Grid.Column only="large screen" width={2} verticalAlign="middle">
                 <h4>Noten Archiv</h4>
             </Grid.Column>
-            <Grid.Column mobile={12} tablet={9} computer={6}>
+            <Grid.Column mobile={10} tablet={9} computer={6}>
                 <MainSearch/>
             </Grid.Column>
-            <Grid.Column mobile={2} tablet={2} computer={6} floated="right" textAlign="right">
+            <Grid.Column mobile={3} tablet={2} computer={6} floated="right" textAlign="right">
                 <Button as="a" basic icon="user"/>
             </Grid.Column>
         </Grid>
