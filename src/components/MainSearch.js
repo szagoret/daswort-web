@@ -41,7 +41,7 @@ export default class MainSearch extends Component {
         const {isLoading, value, results} = this.state;
         return (
             <Search
-                fluid={true}
+                fluid
                 loading={isLoading}
                 input={{fluid: true}}
                 onResultSelect={this.handleResultSelect}
