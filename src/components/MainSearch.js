@@ -12,7 +12,7 @@ const source = _.times(5, () => ({
 
 const initialState = {isLoading: false, results: [], value: ''};
 
-export default class SearchExampleStandard extends Component {
+export default class MainSearch extends Component {
 
     constructor(props) {
         super(props);
@@ -42,12 +42,10 @@ export default class SearchExampleStandard extends Component {
         return (
             <Search
                 fluid={true}
-                className="fluid"
                 loading={isLoading}
+                input={{fluid: true}}
                 onResultSelect={this.handleResultSelect}
-                onSearchChange={_.debounce(this.handleSearchChange, 500, {
-                    leading: true,
-                })}
+                onSearchChange={_.debounce(this.handleSearchChange, 500, {leading: true,})}
                 results={results}
                 value={value}
                 {...this.props}
