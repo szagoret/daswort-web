@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
 import 'semantic-ui-css/semantic.min.css';
 import './App.scss';
-import {Button, Container, Grid, Icon, Image, Menu, Responsive, Segment, Sidebar, Visibility} from "semantic-ui-react";
+import {Button, Container, Dropdown, Grid, Icon, Image, Menu, Responsive, Segment, Sidebar, Visibility} from "semantic-ui-react";
 import MainSearch from "./components/MainSearch";
 
 const MenuItems = [
-    <Menu.Item key={1} as='a'>
+    <Menu.Item key={1} as='a' active>
         <Icon name='music'/>Note
     </Menu.Item>,
     <Menu.Item key={2} as='a'>
@@ -63,16 +63,18 @@ const DesktopContainer = ({children}) => {
             <Responsive minWidth={Responsive.onlyTablet.minWidth}>
                 <PageHeader/>
                 <Visibility once={false}>
-                    <Grid columns={2}>
-                        <Grid.Column width={4}>
-                            <Menu vertical borderless>
-                                {MenuItems}
-                            </Menu>
-                        </Grid.Column>
-                        <Grid.Column width={12}>
-                            {children}
-                        </Grid.Column>
-                    </Grid>
+                    <Container>
+                        <Grid>
+                            <Grid.Column width={4}>
+                                <Menu vertical borderless>
+                                    {MenuItems}
+                                </Menu>
+                            </Grid.Column>
+                            <Grid.Column width={10}>
+                                {children}
+                            </Grid.Column>
+                        </Grid>
+                    </Container>
                 </Visibility>
             </Responsive>
         </>
@@ -110,99 +112,50 @@ const ResponsiveContainer = ({children}) => (
 export default () => {
     return (
         <ResponsiveContainer>
-            <Container fluid style={{padding: '20px'}}>
-                <Grid centered>
-                    <Grid.Row>
-                        <Grid.Column>
-                            <Container>1</Container>
-                        </Grid.Column>
-                        <Grid.Column>
-                            <Container>1</Container>
-                            <Container>2</Container>
-                        </Grid.Column>
-                        <Grid.Column>
-                            <Container>1</Container>
-                            <Container>2</Container>
-                            <Container>3</Container>
-                        </Grid.Column> <Grid.Column>
-                        <Container>1</Container>
-                        <Container>2</Container>
-                        <Container>3</Container>
-                    </Grid.Column>
-                    </Grid.Row>
-                    <Grid.Row>
-                        <Grid.Column>
-                            <Container>1</Container>
-                        </Grid.Column>
-                        <Grid.Column>
-                            <Container>1</Container>
-                            <Container>2</Container>
-                        </Grid.Column>
-                        <Grid.Column>
-                            <Container>1</Container>
-                            <Container>2</Container>
-                            <Container>3</Container>
-                        </Grid.Column> <Grid.Column>
-                        <Container>1</Container>
-                        <Container>2</Container>
-                        <Container>3</Container>
-                    </Grid.Column>
-                    </Grid.Row>
-                    <Grid.Row>
-                        <Grid.Column>
-                            <Container>1</Container>
-                        </Grid.Column>
-                        <Grid.Column>
-                            <Container>1</Container>
-                            <Container>2</Container>
-                        </Grid.Column>
-                        <Grid.Column>
-                            <Container>1</Container>
-                            <Container>2</Container>
-                            <Container>3</Container>
-                        </Grid.Column> <Grid.Column>
-                        <Container>1</Container>
-                        <Container>2</Container>
-                        <Container>3</Container>
-                    </Grid.Column>
-                    </Grid.Row>
-                    <Grid.Row>
-                        <Grid.Column>
-                            <Container>1</Container>
-                        </Grid.Column>
-                        <Grid.Column>
-                            <Container>1</Container>
-                            <Container>2</Container>
-                        </Grid.Column>
-                        <Grid.Column>
-                            <Container>1</Container>
-                            <Container>2</Container>
-                            <Container>3</Container>
-                        </Grid.Column> <Grid.Column>
-                        <Container>1</Container>
-                        <Container>2</Container>
-                        <Container>3</Container>
-                    </Grid.Column>
-                    </Grid.Row>
-                    <Grid.Row>
-                        <Grid.Column>
-                            <Container>1</Container>
-                        </Grid.Column>
-                        <Grid.Column>
-                            <Container>1</Container>
-                            <Container>2</Container>
-                        </Grid.Column>
-                        <Grid.Column>
-                            <Container>1</Container>
-                            <Container>2</Container>
-                            <Container>3</Container>
-                        </Grid.Column> <Grid.Column>
-                        <Container>1</Container>
-                        <Container>2</Container>
-                        <Container>3</Container>
-                    </Grid.Column>
-                    </Grid.Row>
-                </Grid>
+            <Container fluid>
+                {/*<Segment>*/}
+                    <div>
+                        <Menu attached='top'>
+                            <Dropdown item icon='wrench' simple>
+                                <Dropdown.Menu>
+                                    <Dropdown.Item>
+                                        <Icon name='dropdown'/>
+                                        <span className='text'>New</span>
+
+                                        <Dropdown.Menu>
+                                            <Dropdown.Item>Document</Dropdown.Item>
+                                            <Dropdown.Item>Image</Dropdown.Item>
+                                        </Dropdown.Menu>
+                                    </Dropdown.Item>
+                                    <Dropdown.Item>Open</Dropdown.Item>
+                                    <Dropdown.Item>Save...</Dropdown.Item>
+                                    <Dropdown.Item>Edit Permissions</Dropdown.Item>
+                                    <Dropdown.Divider/>
+                                    <Dropdown.Header>Export</Dropdown.Header>
+                                    <Dropdown.Item>Share</Dropdown.Item>
+                                </Dropdown.Menu>
+                            </Dropdown>
+
+                            <Menu.Menu position='right'>
+                                <div className='ui right aligned category search item'>
+                                    <div className='ui transparent icon input'>
+                                        <input
+                                            className='prompt'
+                                            type='text'
+                                            placeholder='Search notes...'
+                                        />
+                                        <i className='search link icon'/>
+                                    </div>
+                                    <div className='results'/>
+                                </div>
+                            </Menu.Menu>
+                        </Menu>
+
+                        <Segment attached='bottom'>
+                            <img src='https://react.semantic-ui.com/images/wireframe/paragraph.png'/>
+                        </Segment>
+                    </div>
+                {/*</Segment>*/}
             </Container>
         </ResponsiveContainer>
     );
