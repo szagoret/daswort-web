@@ -51,16 +51,16 @@ const DesktopContainer = ({children}) => {
                 <Visibility once={false}>
                     <Container fluid style={{paddingTop: '10px'}}>
                         <Grid>
-                            <Grid.Column widescreen={1} only="large screen"/>
+                            <Grid.Column widescreen={2} only="widescreen"/>
                             <Grid.Column width={3}>
                                 <Menu vertical borderless secondary pointing>
                                     {MenuItems}
                                 </Menu>
                             </Grid.Column>
-                            <Grid.Column largeScreen={11} computer={13}>
+                            <Grid.Column widescreen={10} computer={12}>
                                 {children}
                             </Grid.Column>
-                            <Grid.Column widescreen={1} only="large screen"/>
+                            <Grid.Column widescreen={2} only="widescreen"/>
                         </Grid>
                     </Container>
                 </Visibility>
