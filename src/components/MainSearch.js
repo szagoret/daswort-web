@@ -41,6 +41,7 @@ export default class MainSearch extends Component {
         const {isLoading, value, results} = this.state;
         return (
             <Search
+                className="main-search"
                 fluid
                 loading={isLoading}
                 input={{fluid: true}}

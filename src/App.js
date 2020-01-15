@@ -52,12 +52,12 @@ const DesktopContainer = ({children}) => {
                     <Container fluid style={{paddingTop: '10px'}}>
                         <Grid>
                             <Grid.Column widescreen={2} only="widescreen"/>
-                            <Grid.Column width={3}>
+                            <Grid.Column tablet={4} computer={3}>
                                 <Menu vertical borderless secondary pointing>
                                     {MenuItems}
                                 </Menu>
                             </Grid.Column>
-                            <Grid.Column widescreen={10} computer={12}>
+                            <Grid.Column tablet={12} computer={12} widescreen={10} >
                                 {children}
                             </Grid.Column>
                             <Grid.Column widescreen={2} only="widescreen"/>
@@ -75,16 +75,16 @@ const PageHeader = ({children}) => (
     <Segment>
         <Grid container>
             {children}
-            <Grid.Column only="computer" width={2}>
+            <Grid.Column only="computer" tablet={3} computer={2}>
                 <Image size='mini' src='logo.svg'/>
             </Grid.Column>
-            <Grid.Column only="large screen" width={2} verticalAlign="middle">
-                <h4>Notenarchiv</h4>
+            <Grid.Column only="large screen" largeScreen={2} verticalAlign="middle">
+                <h4 style={{color: '#00b5ad'}}>Notenarchiv</h4>
             </Grid.Column>
-            <Grid.Column mobile={10} tablet={9} computer={6}>
+            <Grid.Column mobile={10} tablet={9} computer={6} largeScreen={7}>
                 <MainSearch/>
             </Grid.Column>
-            <Grid.Column mobile={3} tablet={2} computer={6} floated="right" textAlign="right">
+            <Grid.Column mobile={3} tablet={2} computer={6} largeScreen={5} floated="right" textAlign="right">
                 <Button as="a" basic circular icon="user"/>
             </Grid.Column>
         </Grid>
