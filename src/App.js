@@ -1,26 +1,12 @@
 import React, {useState} from 'react';
 import 'semantic-ui-css/semantic.min.css';
 import './App.scss';
-import {Button, Checkbox, Container, Grid, Header, Icon, Image, Menu, Popup, Responsive, Segment, Sidebar, Visibility} from "semantic-ui-react";
+import {Breadcrumb, Button, Card, Container, Grid, Icon, Image, Menu, Message, Responsive, Segment, Sidebar, Visibility} from "semantic-ui-react";
 import MainSearch from "./components/MainSearch";
-
-const MenuItems = [
-    <Menu.Item key={1} as='a' active>
-        <Icon name='music'/>Note
-    </Menu.Item>,
-    <Menu.Item key={2} as='a'>
-        <Icon name='book'/>Theorie
-    </Menu.Item>,
-    <Menu.Item key={3} as='a'>
-        <Icon name='photo'/>Bilder
-    </Menu.Item>,
-    <Menu.Item key={4} as='a'>
-        <Icon name='calendar'/>Veranstaltungen
-    </Menu.Item>,
-    <Menu.Item key={5} as='a'>
-        <Icon name='file audio'/>Audio
-    </Menu.Item>
-];
+import {BrowserRouter as Router, Link} from 'react-router-dom';
+import FilterDropdown from "./components/FilterDropdown";
+import SongTable from "./components/SongTable";
+import MenuItems from "./components/MenuItems";
 
 const MobileContainer = ({children}) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -63,19 +49,22 @@ const DesktopContainer = ({children}) => {
             <Responsive minWidth={Responsive.onlyTablet.minWidth}>
                 <PageHeader/>
                 <Visibility once={false}>
-                    <Container>
+                    <Container fluid style={{paddingTop: '10px'}}>
                         <Grid>
-                            <Grid.Column width={4}>
-                                <Menu vertical borderless>
+                            <Grid.Column widescreen={1} only="large screen"/>
+                            <Grid.Column width={3}>
+                                <Menu vertical borderless secondary pointing>
                                     {MenuItems}
                                 </Menu>
                             </Grid.Column>
-                            <Grid.Column width={10}>
+                            <Grid.Column largeScreen={11} computer={13}>
                                 {children}
                             </Grid.Column>
+                            <Grid.Column widescreen={1} only="large screen"/>
                         </Grid>
                     </Container>
                 </Visibility>
+                <PageFooter/>
             </Responsive>
         </>
     )
@@ -102,6 +91,16 @@ const PageHeader = ({children}) => (
     </Segment>
 );
 
+const PageFooter = () => (
+    <Container fluid style={{paddingTop: '20px'}}>
+        <Menu>
+            <Menu.Item>
+                Created by szagoret
+            </Menu.Item>
+        </Menu>
+    </Container>
+);
+
 const ResponsiveContainer = ({children}) => (
     <>
         <DesktopContainer>{children}</DesktopContainer>
@@ -115,84 +114,36 @@ export default () => {
             <Container fluid>
                 <div>
                     <Menu>
-                        <Popup
-                            pinned
-                            on='click'
-                            trigger={<Menu.Item><span>Thema</span><Icon name="filter" size="small"/></Menu.Item>}
-                            position="bottom left"
-                        >
-                            <Segment basic>
-                                <Grid divided columns='equal' style={{width: "400px"}}>
-                                    <Grid.Column textAlign='center'>
-                                        <Checkbox label='Make my profile visible'/>
-                                    </Grid.Column>
-                                    <Grid.Column textAlign='center'>
-                                        <Checkbox label='Make my profile visible'/>
-                                    </Grid.Column>
-                                    <Grid.Column textAlign='center'>
-                                        <Checkbox label='Make my profile visible'/>
-                                    </Grid.Column>
-                                    <Grid.Column textAlign='center'>
-                                        <Checkbox label='Make my profile visible'/>
-                                    </Grid.Column>
-                                    <Grid.Column textAlign='center'>
-                                        <Checkbox label='Make my profile visible'/>
-                                    </Grid.Column>
-                                    <Grid.Column textAlign='center'>
-                                        <Checkbox label='Make my profile visible'/>
-                                    </Grid.Column>
-                                </Grid>
-                            </Segment>
-                        </Popup>
-                        <Popup
-                            pinned
-                            on='click'
-                            trigger={<Button as={Menu.Item}> <Icon name='filter'/>Author</Button>}
-                            position="bottom left"
-                        >
-                            <Grid centered divided columns={3} style={{width: "400px"}}>
-                                <Grid.Column textAlign='center'>
-                                    <Header as='h4'>Basic Plan</Header>
-                                    <p>
-                                        <b>2</b> projects, $10 a month
-                                    </p>
-                                    <Button>Choose</Button>
-                                </Grid.Column>
-                                <Grid.Column textAlign='center'>
-                                    <Header as='h4'>Business Plan</Header>
-                                    <p>
-                                        <b>5</b> projects, $20 a month
-                                    </p>
-                                    <Button>Choose</Button>
-                                </Grid.Column>
-                                <Grid.Column textAlign='center'>
-                                    <Header as='h4'>Premium Plan</Header>
-                                    <p>
-                                        <b>8</b> projects, $25 a month
-                                    </p>
-                                    <Button>Choose</Button>
-                                </Grid.Column>
-                            </Grid>
-                        </Popup>
-
-                        <Menu.Menu position='right'>
-                            <div className='ui right aligned category search item'>
-                                <div className='ui transparent icon input'>
-                                    <input
-                                        className='prompt'
-                                        type='text'
-                                        placeholder='Search notes...'
-                                    />
-                                    <i className='search link icon'/>
-                                </div>
-                                <div className='results'/>
-                            </div>
-                        </Menu.Menu>
+                        <FilterDropdown name="Thema"/>
+                        <FilterDropdown name="Author"/>
+                        <FilterDropdown name="Besetzung"/>
+                        <FilterDropdown name="Schwlerigkeitsgrad"/>
                     </Menu>
-
-                    <Segment attached='bottom'>
-                        <img src='https://react.semantic-ui.com/images/wireframe/paragraph.png'/>
-                    </Segment>
+                    <SongTable/>
+                    <Router>
+                        <div>
+                            <Message attached header='Categories'/>
+                            <Segment attached>
+                                <Breadcrumb style={{margin: ".875em .5em"}}>
+                                    <Breadcrumb.Section as={Link} to="/asa/e/bine" content="Prima"/>
+                                    <Breadcrumb.Divider content="/"/>
+                                    <Breadcrumb.Section as={Link} to="/asa/e/bine" content="A doua"/>
+                                    <Breadcrumb.Divider content="/"/>
+                                    <Breadcrumb.Section content="Ultima"/>
+                                </Breadcrumb>
+                            </Segment>
+                            <Card.Group className='attached fluid segment'>
+                                <Card link header='Rick Sanchez' meta='Scientist'/>
+                                <Card link header='Rick Sanchez' meta='Scientist'/>
+                                <Card link header='Rick Sanchez' meta='Scientist'/>
+                                <Card link header='Rick Sanchez' meta='Scientist'/>
+                                <Card link header='Rick Sanchez' meta='Scientist'/>
+                                <Card link header='Rick Sanchez' meta='Scientist'/>
+                                <Card link header='Rick Sanchez' meta='Scientist'/>
+                                <Card link header='Rick Sanchez' meta='Scientist'/>
+                            </Card.Group>
+                        </div>
+                    </Router>
                 </div>
             </Container>
         </ResponsiveContainer>
