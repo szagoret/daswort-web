@@ -76,7 +76,7 @@ const PageHeader = ({children}) => (
         <Grid container>
             {children}
             <Grid.Column only="computer" tablet={3} computer={2}>
-                <Image size='mini' src='logo.svg'/>
+                <Image as='img' width="45" height="45" src='/brand.svg'/>
             </Grid.Column>
             <Grid.Column only="large screen" largeScreen={2} verticalAlign="middle">
                 <h4 style={{color: '#00b5ad'}}>Notenarchiv</h4>
