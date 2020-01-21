@@ -1,26 +1,26 @@
 {
   "files": {
     "main.css": "/daswort-web/static/css/main.2ce72ac1.chunk.css",
-    "main.js": "/daswort-web/static/js/main.d1769143.chunk.js",
-    "main.js.map": "/daswort-web/static/js/main.d1769143.chunk.js.map",
+    "main.js": "/daswort-web/static/js/main.58c6af99.chunk.js",
+    "main.js.map": "/daswort-web/static/js/main.58c6af99.chunk.js.map",
     "runtime-main.js": "/daswort-web/static/js/runtime-main.b3a159b7.js",
     "runtime-main.js.map": "/daswort-web/static/js/runtime-main.b3a159b7.js.map",
     "static/css/2.360c7087.chunk.css": "/daswort-web/static/css/2.360c7087.chunk.css",
-    "static/js/2.df789493.chunk.js": "/daswort-web/static/js/2.df789493.chunk.js",
-    "static/js/2.df789493.chunk.js.map": "/daswort-web/static/js/2.df789493.chunk.js.map",
+    "static/js/2.19147eb1.chunk.js": "/daswort-web/static/js/2.19147eb1.chunk.js",
+    "static/js/2.19147eb1.chunk.js.map": "/daswort-web/static/js/2.19147eb1.chunk.js.map",
     "index.html": "/daswort-web/index.html",
-    "precache-manifest.ede97337d28079b9123b427e9b68f063.js": "/daswort-web/precache-manifest.ede97337d28079b9123b427e9b68f063.js",
+    "precache-manifest.c25627fcd91f9c54b59c4fdf75140a58.js": "/daswort-web/precache-manifest.c25627fcd91f9c54b59c4fdf75140a58.js",
     "service-worker.js": "/daswort-web/service-worker.js",
     "static/css/2.360c7087.chunk.css.map": "/daswort-web/static/css/2.360c7087.chunk.css.map",
     "static/css/main.2ce72ac1.chunk.css.map": "/daswort-web/static/css/main.2ce72ac1.chunk.css.map",
-    "static/js/2.df789493.chunk.js.LICENSE": "/daswort-web/static/js/2.df789493.chunk.js.LICENSE",
+    "static/js/2.19147eb1.chunk.js.LICENSE": "/daswort-web/static/js/2.19147eb1.chunk.js.LICENSE",
     "static/media/semantic.min.css": "/daswort-web/static/media/outline-icons.ef60a4f6.woff"
   },
   "entrypoints": [
     "static/js/runtime-main.b3a159b7.js",
     "static/css/2.360c7087.chunk.css",
-    "static/js/2.df789493.chunk.js",
+    "static/js/2.19147eb1.chunk.js",
     "static/css/main.2ce72ac1.chunk.css",
-    "static/js/main.d1769143.chunk.js"
+    "static/js/main.58c6af99.chunk.js"
   ]
 }
