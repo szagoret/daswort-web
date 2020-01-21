@@ -5,8 +5,6 @@ export default ({name, options, ...rest}) => {
 
     const [selectedItems, setSelectedItems] = useState({});
 
-    const [open, setOpen] = useState(false);
-
     useEffect(() => {
         console.log(JSON.stringify(selectedItems));
         console.log(JSON.stringify(options));
@@ -21,7 +19,7 @@ export default ({name, options, ...rest}) => {
                 onChange={handleChange}
                 checked={selectedItems[id]}
                 key={i}
-                name={name}
+                name={id + ''}
                 label={name}
                 value={id}
                 style={{padding: '4px', paddingRight: '7px'}}
@@ -35,10 +33,7 @@ export default ({name, options, ...rest}) => {
     return (
         <Popup pinned on='click'
                trigger={<Button as={Menu.Item}> <Icon name='chevron down'/>{name} {selectedCount > 0 && floatingLabel}</Button>}
-               position="bottom left"
-               onClose={() => setOpen(false)}
-               onOpen={() => setOpen(true)}
-               open={open}>
+               position="bottom left">
             <Container style={{width: "250px", maxHeight: 'calc(60vh - 4em)', overflow: 'auto'}}>
                 <List>
                     {values}
