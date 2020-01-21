@@ -1,63 +1,32 @@
 import React, {useEffect, useState} from "react";
-import {Button, Checkbox, Container, Icon, Label, Menu, Popup} from "semantic-ui-react";
+import {Button, Checkbox, Container, Icon, Label, List, Menu, Popup} from "semantic-ui-react";
 
-const options = [
-    {
-        id: 1,
-        label: "Label 1",
-        value: 1
-    },
-    {
-        id: 2,
-        label: "Label 2",
-        value: 2
-    },
-    {
-        id: 3,
-        label: "Label 3",
-        value: 3
-    },
-    {
-        id: 4,
-        label: "Label 4",
-        value: 4
-    },
-    {
-        id: 5,
-        label: "Label 5",
-        value: 5
-    },
-    {
-        id: 6,
-        label: "Label 6",
-        value: 6
-    },
-    {
-        id: 7,
-        label: "Label 7",
-        value: 7
-    },
-    {
-        id: 8,
-        label: "Label 8",
-        value: 8
-    }
-];
-
-
-export default ({name}) => {
+export default ({name, options, ...rest}) => {
 
     const [selectedItems, setSelectedItems] = useState({});
 
+    const [open, setOpen] = useState(false);
+
     useEffect(() => {
-        console.log(JSON.stringify(selectedItems))
-    });
+        console.log(JSON.stringify(selectedItems));
+        console.log(JSON.stringify(options));
+    }, [selectedItems]);
     const handleChange = (e, data) => {
         setSelectedItems({...selectedItems, [data.name]: data.checked});
     };
 
-    const values = options.map(({id, label, value}, i) =>
-        <Checkbox onChange={handleChange} checked={selectedItems[id]} key={i} name={id + ''} label={label} value={value} style={{padding: '4px', paddingRight: '7px'}}/>);
+    const values = options.map(({id, name}, i) =>
+        <List.Item>
+            <Checkbox
+                onChange={handleChange}
+                checked={selectedItems[id]}
+                key={i}
+                name={name}
+                label={name}
+                value={id}
+                style={{padding: '4px', paddingRight: '7px'}}
+                {...rest}/>
+        </List.Item>);
 
     const selectedCount = Object.keys(selectedItems).filter(key => selectedItems[key] === true).length;
 
@@ -65,12 +34,15 @@ export default ({name}) => {
 
     return (
         <Popup pinned on='click'
-               trigger={<Button as={Menu.Item}> <Icon name='chevron down'/>{name}
-                   {selectedCount > 0 && floatingLabel}
-               </Button>}
-               position="bottom left">
-            <Container style={{width: "250px"}}>
-                {values}
+               trigger={<Button as={Menu.Item}> <Icon name='chevron down'/>{name} {selectedCount > 0 && floatingLabel}</Button>}
+               position="bottom left"
+               onClose={() => setOpen(false)}
+               onOpen={() => setOpen(true)}
+               open={open}>
+            <Container style={{width: "250px", maxHeight: 'calc(60vh - 4em)', overflow: 'auto'}}>
+                <List>
+                    {values}
+                </List>
             </Container>
         </Popup>
     )

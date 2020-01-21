@@ -1,28 +1,12 @@
 import React, {useState} from 'react';
 import 'semantic-ui-css/semantic.min.css';
 import './App.scss';
-import {
-    Breadcrumb,
-    Button,
-    Card,
-    Checkbox,
-    Container,
-    Dropdown,
-    Grid,
-    Icon,
-    Image,
-    Menu,
-    Message,
-    Responsive,
-    Segment,
-    Sidebar,
-    Visibility
-} from "semantic-ui-react";
+import {Breadcrumb, Button, Card, Container, Grid, Icon, Image, Menu, Message, Responsive, Segment, Sidebar, Visibility} from "semantic-ui-react";
 import MainSearch from "./components/MainSearch";
 import {BrowserRouter as Router, Link} from 'react-router-dom';
-import FilterDropdown from "./components/FilterDropdown";
 import SongTable from "./components/SongTable";
 import MenuItems from "./components/MenuItems";
+import FilterMenu from "./components/FilterMenu";
 
 const MobileContainer = ({children}) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -124,35 +108,14 @@ const ResponsiveContainer = ({children}) => (
     </>
 );
 
-const stopPropagation = e => {e.stopPropagation();}
+
+
 export default () => {
     return (
         <ResponsiveContainer>
             <Container fluid>
                 <div>
-                    <Menu>
-                        <FilterDropdown name="Thema"/>
-                        <FilterDropdown name="Author"/>
-                        <FilterDropdown name="Besetzung"/>
-                        <FilterDropdown name="Schwlerigkeitsgrad"/>
-                        <Dropdown text='Shopping' className='link item' closeOnBlur={false} closeOnEscape={true}>
-                            <Dropdown.Menu>
-                                <Dropdown.Item onClick={stopPropagation}><Checkbox label='Make my profile visible'/></Dropdown.Item>
-                                <Dropdown.Item onClick={stopPropagation}><Checkbox label='Make my profile visible'/></Dropdown.Item>
-                                <Dropdown.Item onClick={stopPropagation}><Checkbox label='Make my profile visible'/></Dropdown.Item>
-                                <Dropdown.Item onClick={stopPropagation}><Checkbox label='Make my profile visible'/></Dropdown.Item>
-                                <Dropdown.Item onClick={stopPropagation}><Checkbox label='Make my profile visible'/></Dropdown.Item>
-                                <Dropdown.Item onClick={stopPropagation}><Checkbox label='Make my profile visible'/></Dropdown.Item>
-                                <Dropdown.Item onClick={stopPropagation}><Checkbox label='Make my profile visible'/></Dropdown.Item>
-                                <Dropdown.Item onClick={stopPropagation}><Checkbox label='Make my profile visible'/></Dropdown.Item>
-                                <Dropdown.Item onClick={stopPropagation}><Checkbox label='Make my profile visible'/></Dropdown.Item>
-                                <Dropdown.Item onClick={stopPropagation}><Checkbox label='Make my profile visible'/></Dropdown.Item>
-                                <Dropdown.Item onClick={stopPropagation}><Checkbox label='Make my profile visible'/></Dropdown.Item>
-                                <Dropdown.Item onClick={stopPropagation}><Checkbox label='Make my profile visible'/></Dropdown.Item>
-                                <Dropdown.Item onClick={stopPropagation}><Checkbox label='Make my profile visible'/></Dropdown.Item>
-                            </Dropdown.Menu>
-                        </Dropdown>
-                    </Menu>
+                    <FilterMenu/>
                     <SongTable/>
                     <Router>
                         <div>
