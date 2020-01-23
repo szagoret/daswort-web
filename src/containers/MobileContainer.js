@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import {Button, Container, Grid, Icon, Menu, Responsive, Sidebar} from "semantic-ui-react";
-import MenuItems from "../components/MenuItems";
+import NavMenuItems from "../components/NavMenuItems";
 import PageHeader from "./PageHeader";
 
 const MobileContainer = ({children}) => {
@@ -20,7 +20,7 @@ const MobileContainer = ({children}) => {
                      vertical
                      visible={isOpen}
                      onHide={handleSidebarHide}>
-                {MenuItems}
+                {NavMenuItems}
             </Sidebar>
             <Sidebar.Pusher dimmed={isOpen}>
                 <PageHeader>

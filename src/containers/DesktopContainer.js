@@ -1,5 +1,5 @@
 import {Container, Grid, Menu, Responsive, Visibility} from "semantic-ui-react";
-import MenuItems from "../components/MenuItems";
+import NavMenuItems from "../components/NavMenuItems";
 import React from "react";
 import PageHeader from "./PageHeader";
 import PageFooter from "./PageFooter";
@@ -15,7 +15,7 @@ const DesktopContainer = ({children}) => {
                             <Grid.Column widescreen={2} only="widescreen"/>
                             <Grid.Column tablet={4} computer={3}>
                                 <Menu vertical borderless secondary pointing>
-                                    {MenuItems}
+                                    {NavMenuItems}
                                 </Menu>
                             </Grid.Column>
                             <Grid.Column tablet={12} computer={12} widescreen={10}>
