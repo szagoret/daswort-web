@@ -49,7 +49,6 @@ export default class MainSearch extends Component {
                 onSearchChange={_.debounce(this.handleSearchChange, 500, {leading: true,})}
                 results={results}
                 value={value}
-                {...this.props}
             />
         )
     }

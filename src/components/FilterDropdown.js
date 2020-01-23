@@ -14,7 +14,7 @@ export default ({name, options, ...rest}) => {
     };
 
     const values = options.map(({id, name}, i) =>
-        <List.Item>
+        <List.Item key={i}>
             <Checkbox
                 onChange={handleChange}
                 checked={selectedItems[id]}

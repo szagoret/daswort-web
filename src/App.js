@@ -3,7 +3,7 @@ import 'semantic-ui-css/semantic.min.css';
 import './App.scss';
 import ResponsiveContainer from "./containers/ResponsiveContainer";
 import {Provider} from "react-redux";
-import {HashRouter as Router, Route, Switch} from "react-router-dom";
+import {Router, Route, Switch} from "react-router-dom";
 import {history} from './utils/history';
 import store from './store/store';
 import {AudioPage, EventsPage, NotesPage, PhotosPage, TheoryPage} from './pages';
