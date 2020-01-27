@@ -1,6 +1,6 @@
 import {Button, Grid, Image, Segment} from "semantic-ui-react";
-import MainSearch from "../components/MainSearch";
 import React from "react";
+import SongSearch from "../components/SongSearch";
 
 const PageHeader = ({children}) => (
     <Segment>
@@ -13,7 +13,7 @@ const PageHeader = ({children}) => (
                 <h4 style={{color: '#00b5ad'}}>Notenarchiv</h4>
             </Grid.Column>
             <Grid.Column mobile={10} tablet={9} computer={6} largeScreen={7}>
-                <MainSearch/>
+                <SongSearch/>
             </Grid.Column>
             <Grid.Column mobile={3} tablet={2} computer={6} largeScreen={5} floated="right" textAlign="right">
                 <Button as="a" basic circular icon="user"/>

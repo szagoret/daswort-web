@@ -16,6 +16,7 @@ export default () => {
         }];
     const rows = [
         {
+            id: '5df319082294eccaa11f2f94',
             name: "Dankt dem Hern",
             author: "Heinich Baueg",
             composition: "Orchester",
@@ -24,6 +25,7 @@ export default () => {
             date: "Sep. 2013"
         },
         {
+            id: '5df319082294eccaa11f2f8c',
             name: "Du grosser Gott",
             author: "Adrian Perebikovski",
             composition: "Quintett",
@@ -32,6 +34,7 @@ export default () => {
             date: "Sep. 2018"
         },
         {
+            id: '5df319082294eccaa11f2f8d',
             name: "Er lebt",
             author: "Adrian Perebikovski",
             composition: "Sexstett",
@@ -115,6 +118,7 @@ export default () => {
 
     const TableCols = columns.map(({name, sorted}, i) => <Table.HeaderCell key={i} sorted={sorted} content={name}/>);
     const TableRows = rows.map(({
+                                    id,
                                     name,
                                     author,
                                     composition,
@@ -124,7 +128,7 @@ export default () => {
                                 }, i) =>
         (
             <Table.Row key={i}>
-                <Table.Cell><Link to={`/song/${i}`}>{name}</Link></Table.Cell>
+                <Table.Cell><Link to={`/song/${id}`}>{name}</Link></Table.Cell>
                 <Table.Cell>{author}</Table.Cell>
                 <Table.Cell>{composition}</Table.Cell>
                 <Table.Cell>
