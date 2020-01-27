@@ -1,6 +1,7 @@
 import React from "react";
 import {Icon, Menu, Table} from "semantic-ui-react";
 import Difficulty from "./Difficulty";
+import {Link} from "react-router-dom";
 
 export default () => {
     const columns = [
@@ -61,6 +62,54 @@ export default () => {
             difficulty: 5,
             theme: "Dank",
             date: "Sep. 2018"
+        },
+        {
+            name: "Gehe in den Weinberg",
+            author: "Heinrich Baueg",
+            composition: "Quintett",
+            difficulty: 4,
+            theme: "Dank",
+            date: "Sep. 2018"
+        },
+        {
+            name: "Heilige Nacht",
+            author: "Heinrich Baueg",
+            composition: "Quintett",
+            difficulty: 5,
+            theme: "Dank",
+            date: "Sep. 2018"
+        },
+        {
+            name: "Gehe in den Weinberg",
+            author: "Heinrich Baueg",
+            composition: "Quintett",
+            difficulty: 4,
+            theme: "Dank",
+            date: "Sep. 2018"
+        },
+        {
+            name: "Heilige Nacht",
+            author: "Heinrich Baueg",
+            composition: "Quintett",
+            difficulty: 5,
+            theme: "Dank",
+            date: "Sep. 2018"
+        },
+        {
+            name: "Gehe in den Weinberg",
+            author: "Heinrich Baueg",
+            composition: "Quintett",
+            difficulty: 4,
+            theme: "Dank",
+            date: "Sep. 2018"
+        },
+        {
+            name: "Heilige Nacht",
+            author: "Heinrich Baueg",
+            composition: "Quintett",
+            difficulty: 5,
+            theme: "Dank",
+            date: "Sep. 2018"
         }
     ];
 
@@ -75,7 +124,7 @@ export default () => {
                                 }, i) =>
         (
             <Table.Row key={i}>
-                <Table.Cell>{name}</Table.Cell>
+                <Table.Cell><Link to={`/song/${i}`}>{name}</Link></Table.Cell>
                 <Table.Cell>{author}</Table.Cell>
                 <Table.Cell>{composition}</Table.Cell>
                 <Table.Cell>
