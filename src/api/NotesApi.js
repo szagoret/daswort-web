@@ -1,17 +1,10 @@
-import axios from 'axios';
+import {get} from './api';
 
-const API = 'http://localhost:8080/api';
+import {API_HOST} from "./api";
 
+export const NOTES_API = `${API_HOST}/song`;
 
-export const findSongsByNameApi = searchTerm => axios.get(`${API}/song/find`, {params: {searchTerm}}).catch(handleError);
+export const findSongsByNameApi = searchTerm => get(`${NOTES_API}/find`, {params: {searchTerm}});
 
-export const findSongById = songId => axios.get(`${API}/song/${songId}`).catch(handleError);
+export const findSongById = songId => get(`${NOTES_API}/${songId}`);
 
-const handleError = (error) => {
-    // const status = error.status ? error.status : error.response && error.response.status;
-    // if (status === 401) {
-    //     removeToken();
-    // }
-
-    return Promise.reject(error);
-};
