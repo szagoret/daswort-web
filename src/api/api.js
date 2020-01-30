@@ -6,6 +6,10 @@ export const get = (url, data) => {
     return axios.get(url, {...config, ...data}).catch(handleError);
 };
 
+export function post(url, data) {
+    return axios.post(url, data, getTokenHeader()).catch(handleError);
+}
+
 const getTokenHeader = () => {
     const token = null;
     const headers = token ? {Authorization: `Bearer ${token}`} : {};

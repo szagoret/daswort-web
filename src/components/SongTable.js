@@ -3,7 +3,7 @@ import {Icon, Menu, Table} from "semantic-ui-react";
 import Difficulty from "./Difficulty";
 import {Link} from "react-router-dom";
 
-export default () => {
+export default ({songs}) => {
     const columns = [
         {name: "Name"},
         {name: "Author"},
@@ -117,25 +117,25 @@ export default () => {
     ];
 
     const TableCols = columns.map(({name, sorted}, i) => <Table.HeaderCell key={i} sorted={sorted} content={name}/>);
-    const TableRows = rows.map(({
-                                    id,
-                                    name,
-                                    author,
-                                    composition,
-                                    difficulty,
-                                    theme,
-                                    date
-                                }, i) =>
+    const TableRows = songs.map(({
+                                     id,
+                                     name,
+                                     melodyAuthor,
+                                     composition,
+                                     difficulty,
+                                     topics,
+                                     date
+                                 }, i) =>
         (
             <Table.Row key={i}>
                 <Table.Cell><Link to={`/song/${id}`}>{name}</Link></Table.Cell>
-                <Table.Cell>{author}</Table.Cell>
-                <Table.Cell>{composition}</Table.Cell>
+                <Table.Cell>{melodyAuthor.firstName}</Table.Cell>
+                <Table.Cell>{composition.name}</Table.Cell>
                 <Table.Cell>
-                    <Difficulty value={difficulty}/>
+                    <Difficulty value={parseInt((difficulty || {}).name) || 0}/>
                 </Table.Cell>
-                <Table.Cell>{theme}</Table.Cell>
-                <Table.Cell>{date}</Table.Cell>
+                <Table.Cell>{topics.map(topic => topic.name).join(" , ")}</Table.Cell>
+                <Table.Cell>Sep. 2013</Table.Cell>
             </Table.Row>
         )
     );

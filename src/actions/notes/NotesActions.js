@@ -1,15 +1,14 @@
-import {findSongsByNameApi} from "../../api/NotesApi";
-import {FIND_SONGS_BY_NAME} from "./NotesActionsTypes";
+import {findSongsByCriteriaApi} from "../../api/NotesApi";
+import {FIND_SONGS_BY_CRITERIA} from "./NotesActionsTypes";
 
-export const findSongsByNameAction = songs => {
+export const findSongsByCriteriaAction = songs => {
     return {
-        type: FIND_SONGS_BY_NAME,
+        type: FIND_SONGS_BY_CRITERIA,
         songs
     }
 };
 
-
-export const findSongsByName = ({searchTerm}) =>
-    dispatch =>
-        findSongsByNameApi(searchTerm)
-            .then(response => dispatch(findSongsByNameAction(response.data)));
+export const findSongsByCriteria = (searchCriteria) => {
+    return dispatch => findSongsByCriteriaApi(searchCriteria)
+        .then(response => dispatch(findSongsByCriteriaAction(response.data)));
+};

@@ -1,4 +1,4 @@
-import {FIND_SONGS_BY_NAME} from "../actions/notes/NotesActionsTypes";
+import {FIND_SONGS_BY_CRITERIA} from "../actions/notes/NotesActionsTypes";
 
 const INITIAL_STATE = {
     songs: []
@@ -6,7 +6,7 @@ const INITIAL_STATE = {
 
 export default (state = INITIAL_STATE, action = {}) => {
     switch (action.type) {
-        case FIND_SONGS_BY_NAME: {
+        case FIND_SONGS_BY_CRITERIA: {
             return {...state, songs: action.songs}
         }
         default:
