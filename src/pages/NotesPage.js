@@ -1,12 +1,12 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import {Breadcrumb, Card, Message, Segment} from "semantic-ui-react";
-import FilterMenu from "../components/FilterMenu";
+import FilterMenu from "../components/FilterToolbar/FilterToolbar";
 import SongTable from "../components/SongTable";
 
 const NotesPage = () => (
     <>
-        <FilterMenu/>
+        <FilterMenu onFilter={(searchCriteria) => console.log(JSON.stringify(searchCriteria))}/>
         <SongTable/>
         <div>
             <Message attached header='Categories'/>
