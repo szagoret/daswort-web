@@ -120,7 +120,7 @@ export default ({songs}) => {
     const TableRows = songs.map(({
                                      id,
                                      name,
-                                     melodyAuthor,
+                                     arrangement,
                                      composition,
                                      difficulty,
                                      topics,
@@ -129,7 +129,7 @@ export default ({songs}) => {
         (
             <Table.Row key={i}>
                 <Table.Cell><Link to={`/song/${id}`}>{name}</Link></Table.Cell>
-                <Table.Cell>{melodyAuthor.firstName}</Table.Cell>
+                <Table.Cell>{arrangement.firstName}</Table.Cell>
                 <Table.Cell>{composition.name}</Table.Cell>
                 <Table.Cell>
                     <Difficulty value={parseInt((difficulty || {}).name) || 0}/>

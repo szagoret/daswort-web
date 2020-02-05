@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import {Link} from "react-router-dom";
 import {Breadcrumb, Card, Message, Segment} from "semantic-ui-react";
-import FilterToolbar from "../components/FilterToolbar/FilterToolbar";
+import FilterToolbar from "../components/FilterToolbar";
 import SongTable from "../components/SongTable";
 import {connect} from "react-redux";
 import {findSongsByCriteria} from "../actions/notes/NotesActions";
