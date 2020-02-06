@@ -1,10 +1,10 @@
 import {findSongsByCriteriaApi} from "../../api/NotesApi";
 import {FIND_SONGS_BY_CRITERIA} from "./NotesActionsTypes";
 
-export const findSongsByCriteriaAction = songs => {
+export const findSongsByCriteriaAction = result => {
     return {
         type: FIND_SONGS_BY_CRITERIA,
-        songs
+        result
     }
 };
 

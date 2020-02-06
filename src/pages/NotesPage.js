@@ -11,7 +11,7 @@ class NotesPage extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {page: 0, size: 20, searchCriteria: {}}
+        this.state = {page: 0, searchCriteria: {}}
     }
 
     onFilter = (searchCriteria) => {
@@ -19,20 +19,18 @@ class NotesPage extends Component {
     };
 
     onSearch = () => {
-        this.props.findSongsByCriteria({...this.state.searchCriteria, page: this.state.page, size: this.state.size});
+        const {searchCriteria, page} = this.state;
+        this.props.findSongsByCriteria({...searchCriteria, page, size: this.props.size});
     };
 
-    onNext = () => this.onPageChange(this.state.page + 1);
-
-    onPrev = () => this.onPageChange(this.state.page - 1);
-
-    onPageChange = (page) => this.setState({page}, () => this.onSearch(this.state.searchCriteria));
+    onPageChange = (page) => this.setState({page}, this.onSearch);
 
     render() {
+        const {songs, page, total, size} = this.props;
         return (
             <>
                 <FilterToolbar onFilter={this.onFilter}/>
-                <SongTable songs={this.props.songs}/>
+                <SongTable songs={songs} totalItems={total} page={page} pageSize={size} onPageChange={this.onPageChange}/>
                 <div>
                     <Message attached header='Categories'/>
                     <Segment attached>
@@ -61,5 +59,8 @@ class NotesPage extends Component {
 }
 
 export default connect((state) => ({
-    songs: state.nr.songs
+    songs: state.nr.songs,
+    size: state.nr.size,
+    page: state.nr.page,
+    total: state.nr.total
 }), {findSongsByCriteria})(NotesPage);
