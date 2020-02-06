@@ -4,7 +4,9 @@ const INITIAL_STATE = {
     songs: [],
     size: 20,
     page: 0,
-    total: 0
+    total: 0,
+    sortDirection: 'ASC',
+    sortProperty: 'name'
 };
 
 export default (state = INITIAL_STATE, action = {}) => {

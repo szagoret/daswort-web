@@ -11,26 +11,49 @@ class NotesPage extends Component {
 
     constructor(props) {
         super(props);
-        this.state = {page: 0, searchCriteria: {}}
+        this.state = {page: 0, sortProperty: 'name', sortDirection: 'ASC', searchCriteria: {}, loading: false}
     }
 
-    onFilter = (searchCriteria) => {
-        this.setState({searchCriteria}, () => this.onSearch());
+    onSearch = () => {
+        const {searchCriteria, page, sortProperty, sortDirection} = this.state;
+        const {size} = this.props;
+        this.setState({loading: true},
+            this.props.findSongsByCriteria({
+                ...searchCriteria,
+                page,
+                size,
+                sortDirection,
+                sortProperty
+            }, () => this.setState({loading: false})));
     };
 
-    onSearch = () => {
-        const {searchCriteria, page} = this.state;
-        this.props.findSongsByCriteria({...searchCriteria, page, size: this.props.size});
-    };
+    onFilter = (searchCriteria) => this.setState({searchCriteria}, this.onSearch);
+
+    onSorting = (sortProperty) => this.setState({
+        sortProperty,
+        sortDirection: this.state.sortDirection === 'ASC' ? 'DESC' : 'ASC'
+    }, this.onSearch);
 
     onPageChange = (page) => this.setState({page}, this.onSearch);
 
     render() {
         const {songs, page, total, size} = this.props;
+        const {sortDirection, sortProperty, loading} = this.state;
         return (
             <>
-                <FilterToolbar onFilter={this.onFilter}/>
-                <SongTable songs={songs} totalItems={total} page={page} pageSize={size} onPageChange={this.onPageChange}/>
+                <Segment basic loading={loading}>
+                    <FilterToolbar onFilter={this.onFilter}/>
+                    <SongTable
+                        songs={songs}
+                        totalItems={total}
+                        page={page}
+                        pageSize={size}
+                        onPageChange={this.onPageChange}
+                        sortedColumn={sortProperty}
+                        direction={sortDirection}
+                        onSorting={this.onSorting}
+                    />
+                </Segment>
                 <div>
                     <Message attached header='Categories'/>
                     <Segment attached>
