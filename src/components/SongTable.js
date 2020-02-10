@@ -48,7 +48,7 @@ export default ({songs, page, totalItems, pageSize, onPageChange, sortedColumn, 
                     <Table.Cell>{(arrangement || {}).firstName}</Table.Cell>
                     <Table.Cell>{(composition || {}).name}</Table.Cell>
                     <Table.Cell>
-                        <Difficulty value={parseInt((difficulty || {}).name) || 0}/>
+                        <Difficulty>{(difficulty || {}).name}</Difficulty>
                     </Table.Cell>
                     <Table.Cell>{topics.map(topic => topic.name).join(" , ")}</Table.Cell>
                     <Table.Cell>Sep. 2013</Table.Cell>

@@ -1,9 +1,9 @@
 import {chunkArray} from "../utils/ArrayUtils";
-import React from "react";
+import React, {createElement} from "react";
 import {Checkbox, Grid, GridColumn, List} from "semantic-ui-react";
 import {arrayOf, func, number, shape, string} from "prop-types";
 
-const CheckBoxGrid = ({options, selectedOptions, onChange, rows}) => {
+const CheckBoxGrid = ({options, selectedOptions, onChange, rows, as}) => {
     const columnsCount = options.length < rows ? 1 : Math.ceil(options.length / rows);
 
     const columns = () => {
@@ -17,7 +17,7 @@ const CheckBoxGrid = ({options, selectedOptions, onChange, rows}) => {
                                 checked={selectedOptions.includes(id)}
                                 key={id}
                                 name={id}
-                                label={name}
+                                label={{children: as ? createElement(as, {}, name) : name}}
                                 value={id}
                                 style={{padding: '4px', paddingRight: '7px'}}
                             />

@@ -4,7 +4,7 @@ import {concat, pull} from 'lodash';
 import {Button, Icon, Label, Menu, Popup, Segment} from "semantic-ui-react";
 import CheckBoxGrid from "./CheckBoxGrid";
 
-const FilterDropdown = ({label, options, selectedOptions, onChange, rows, styles}) => {
+const FilterDropdown = ({label, options, selectedOptions, onChange, rows, styles, as}) => {
 
     const onFilterChange = (id, checked) => {
         if (!checked) {
@@ -27,6 +27,7 @@ const FilterDropdown = ({label, options, selectedOptions, onChange, rows, styles
                     selectedOptions={selectedOptions}
                     onChange={onFilterChange}
                     rows={rows}
+                    as={as}
                 />
             </Segment>
         </Popup>

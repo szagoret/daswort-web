@@ -6,7 +6,7 @@ const INITIAL_STATE = {
     page: 0,
     total: 0,
     sortDirection: 'ASC',
-    sortProperty: 'name'
+    sortProperty: 'name',
 };
 
 export default (state = INITIAL_STATE, action = {}) => {
