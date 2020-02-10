@@ -1,13 +1,14 @@
 import React, {useEffect, useState} from "react";
-import {Container, Icon, Label, Menu} from "semantic-ui-react";
+import {Menu} from "semantic-ui-react";
 import {func} from "prop-types";
 import FilterDropdown from "./FilterDropdown";
 import {getSongFiltersApi} from "../api/NotesApi";
 import Difficulty from "./Difficulty";
+import SelectedFilters from "./SelectedFilters";
 
 const FilterToolbar = ({onFilter}) => {
 
-    const initialState = {
+    const initialSearchState = {
         topicsIds: [],
         authorsIds: [],
         compositionsIds: [],
@@ -15,13 +16,21 @@ const FilterToolbar = ({onFilter}) => {
         instrumentsIds: []
     };
 
-    const [searchCriteria, setSearchCriteria] = useState(initialState);
+    const initialOptionsState = {
+        topics: [],
+        authors: [],
+        difficulties: [],
+        compositions: [],
+        instruments: []
+    };
+
+    const [searchCriteria, setSearchCriteria] = useState(initialSearchState);
 
     useEffect(() => {
         onFilter(searchCriteria);
     }, [searchCriteria, onFilter]);
 
-    const [filtersOptions, setFilterOptions] = useState({});
+    const [filtersOptions, setFilterOptions] = useState(initialOptionsState);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -34,6 +43,11 @@ const FilterToolbar = ({onFilter}) => {
 
     const setValue = (keyValue) => {
         setSearchCriteria({...searchCriteria, ...keyValue});
+    };
+
+
+    const resetFilters = () => {
+        setSearchCriteria({...initialSearchState});
     };
 
     return (
@@ -72,12 +86,11 @@ const FilterToolbar = ({onFilter}) => {
                     onChange={(instrumentsIds) => setValue({instrumentsIds})}
                 />
             </Menu>
-            <Container>
-                <Label basic>
-                    Tag
-                    <Icon name='delete'/>
-                </Label>
-            </Container>
+            <SelectedFilters searchCriteria={searchCriteria}
+                             filtersOptions={filtersOptions}
+                             resetFilters={resetFilters}
+                             setValue={setValue}
+            />
         </>
     );
 };
