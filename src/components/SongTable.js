@@ -44,8 +44,8 @@ export default ({songs, page, totalItems, pageSize, onPageChange, sortedColumn, 
          }, i) =>
             (
                 <Table.Row key={i}>
-                    <Table.Cell><Link to={`/song/${id}`}>{name}</Link></Table.Cell>
-                    <Table.Cell>{(arrangement || {}).firstName}</Table.Cell>
+                    <Table.Cell style={{fontSize: '1.3em'}}><Link to={`/song/${id}`}>{name}</Link></Table.Cell>
+                    <Table.Cell>{(arrangement || {}).firstName}{' '}{(arrangement || {}).lastName}</Table.Cell>
                     <Table.Cell>{(composition || {}).name}</Table.Cell>
                     <Table.Cell>
                         <Difficulty>{(difficulty || {}).name}</Difficulty>
@@ -57,7 +57,7 @@ export default ({songs, page, totalItems, pageSize, onPageChange, sortedColumn, 
     );
 
     return (
-        <Table sortable celled>
+        <Table sortable striped>
             <Table.Header>
                 <Table.Row>
                     {TableCols}
