@@ -19,7 +19,7 @@ const Categories = () => {
     const handleOnClick = (category) => {
         setCategory(category);
     };
-    const categoriesList = categories.map(category => <Card link header={category.name} onClick={() => handleOnClick(category)}/>);
+    const categoriesList = categories.map((category, i) => <Card key={i} link header={category.name} onClick={() => handleOnClick(category)}/>);
 
     return (
         <div>

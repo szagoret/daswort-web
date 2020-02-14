@@ -14,18 +14,25 @@ const CategoryBreadcrumb = ({category, onClick}) => {
                 setCategoryPath(result.data);
             };
             fetchCategoryPath().catch();
+        } else {
+            setCategoryPath([]);
         }
     }, [category]);
 
-    let sections = [{
-        key: 0,
-        content: <Icon name='home'/>,
-        onClick: () => onClick()
-    }];
-    sections = concat(sections,
+    const sections = concat({
+            key: '0',
+            content: <Icon name='home'/>,
+            onClick: () => onClick()
+        },
         categoryPath.map((c, i) => {
             const isLastIndex = i === categoryPath.length - 1;
-            return {key: c.id, content: c.name, link: !isLastIndex, active: isLastIndex, onClick: () => !isLastIndex ? onClick(c) : null};
+            return {
+                key: c.id,
+                content: c.name,
+                link: !isLastIndex,
+                active: isLastIndex,
+                onClick: () => !isLastIndex ? onClick(c) : null
+            };
         })
     );
 
