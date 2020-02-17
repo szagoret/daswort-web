@@ -17,6 +17,9 @@ const NavMenuItems = [
     </Menu.Item>,
     <Menu.Item key={5} as={NavLink} to="/audio" activeClassName="active" exact>
         <Icon name='file audio'/>Audio
+    </Menu.Item>,
+    <Menu.Item key={5} as={NavLink} to="/admin" activeClassName="active" exact>
+        <Icon name='configure'/>Configuration
     </Menu.Item>
 ];
 

@@ -1,4 +1,5 @@
 import axios from "axios";
+
 export const API_HOST = process.env.REACT_APP_API_HOST;
 
 export const get = (url, data) => {
@@ -8,6 +9,10 @@ export const get = (url, data) => {
 
 export function post(url, data) {
     return axios.post(url, data, getTokenHeader()).catch(handleError);
+}
+
+export function put(url, data) {
+    return axios.put(url, data, getTokenHeader()).catch(handleError);
 }
 
 const getTokenHeader = () => {

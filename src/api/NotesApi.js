@@ -1,4 +1,4 @@
-import {API_HOST, get, post} from './api';
+import {API_HOST, get, post, put} from './api';
 
 export const NOTES_API = `${API_HOST}/song`;
 
@@ -10,3 +10,6 @@ export const findSongsByCriteriaApi = searchCriteria => post(`${NOTES_API}/searc
 
 export const getSongFiltersApi = () => get(`${NOTES_API}/filters`);
 
+export const addSongApi = (song) => post(`${NOTES_API}`, song);
+
+export const updateSongApi = (id, song) => put(`${NOTES_API}/${id}`, song);
