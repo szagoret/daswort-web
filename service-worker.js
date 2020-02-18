@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/daswort-web/precache-manifest.35061cb8a84a9610e4d35bbfaa124c5a.js"
+  "/daswort-web/precache-manifest.5b11f6e273acbb3101b268711b20a896.js"
 );
 
 self.addEventListener('message', (event) => {

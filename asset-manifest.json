@@ -1,26 +1,26 @@
 {
   "files": {
     "main.css": "/daswort-web/static/css/main.ce2d1325.chunk.css",
-    "main.js": "/daswort-web/static/js/main.05c37705.chunk.js",
-    "main.js.map": "/daswort-web/static/js/main.05c37705.chunk.js.map",
+    "main.js": "/daswort-web/static/js/main.b6dd3bbb.chunk.js",
+    "main.js.map": "/daswort-web/static/js/main.b6dd3bbb.chunk.js.map",
     "runtime-main.js": "/daswort-web/static/js/runtime-main.b3a159b7.js",
     "runtime-main.js.map": "/daswort-web/static/js/runtime-main.b3a159b7.js.map",
-    "static/css/2.3f172371.chunk.css": "/daswort-web/static/css/2.3f172371.chunk.css",
-    "static/js/2.26c2f690.chunk.js": "/daswort-web/static/js/2.26c2f690.chunk.js",
-    "static/js/2.26c2f690.chunk.js.map": "/daswort-web/static/js/2.26c2f690.chunk.js.map",
+    "static/css/2.5d845047.chunk.css": "/daswort-web/static/css/2.5d845047.chunk.css",
+    "static/js/2.5fcdf623.chunk.js": "/daswort-web/static/js/2.5fcdf623.chunk.js",
+    "static/js/2.5fcdf623.chunk.js.map": "/daswort-web/static/js/2.5fcdf623.chunk.js.map",
     "index.html": "/daswort-web/index.html",
-    "precache-manifest.35061cb8a84a9610e4d35bbfaa124c5a.js": "/daswort-web/precache-manifest.35061cb8a84a9610e4d35bbfaa124c5a.js",
+    "precache-manifest.5b11f6e273acbb3101b268711b20a896.js": "/daswort-web/precache-manifest.5b11f6e273acbb3101b268711b20a896.js",
     "service-worker.js": "/daswort-web/service-worker.js",
-    "static/css/2.3f172371.chunk.css.map": "/daswort-web/static/css/2.3f172371.chunk.css.map",
+    "static/css/2.5d845047.chunk.css.map": "/daswort-web/static/css/2.5d845047.chunk.css.map",
     "static/css/main.ce2d1325.chunk.css.map": "/daswort-web/static/css/main.ce2d1325.chunk.css.map",
-    "static/js/2.26c2f690.chunk.js.LICENSE": "/daswort-web/static/js/2.26c2f690.chunk.js.LICENSE",
+    "static/js/2.5fcdf623.chunk.js.LICENSE": "/daswort-web/static/js/2.5fcdf623.chunk.js.LICENSE",
     "static/media/semantic.min.css": "/daswort-web/static/media/outline-icons.ef60a4f6.woff"
   },
   "entrypoints": [
     "static/js/runtime-main.b3a159b7.js",
-    "static/css/2.3f172371.chunk.css",
-    "static/js/2.26c2f690.chunk.js",
+    "static/css/2.5d845047.chunk.css",
+    "static/js/2.5fcdf623.chunk.js",
     "static/css/main.ce2d1325.chunk.css",
-    "static/js/main.05c37705.chunk.js"
+    "static/js/main.b6dd3bbb.chunk.js"
   ]
 }
