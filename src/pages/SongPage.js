@@ -34,15 +34,16 @@ const SongPage = () => {
     };
     return (
         <Container>
-            <Grid>
+            <Grid stackable>
                 <GridRow>
                     <GridColumn>
                         <Link to="/"> <Icon name="arrow left"/> Back to home page</Link>
                     </GridColumn>
                 </GridRow>
                 <GridRow>
-                    <GridColumn width={10}>
-                        <PDFDocument/>
+                    <GridColumn width={10} className="pdf-file-viewer">
+                        <PDFDocument
+                            file="http://localhost:8080/api/song/5e0084ae7ae3d713a5ee7964/files/003e417f-9a85-4560-9b39-eb914ba45cd1/download"/>
                     </GridColumn>
                     <GridColumn width={5}>
                         <Segment>

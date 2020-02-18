@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import {Document, Page} from 'react-pdf';
 import {Pagination, Segment} from "semantic-ui-react";
 
-const PDFDocument = () => {
+const PDFDocument = ({file}) => {
 
     const [numPages, setNumPages] = useState();
 
@@ -25,7 +25,8 @@ const PDFDocument = () => {
                             size='mini'
                 />
             </Segment>
-            <Document file="/pdf-file.pdf" onLoadSuccess={onDocumentLoadSuccess}>
+            <Document file={file}
+                      onLoadError={console.error} onLoadSuccess={onDocumentLoadSuccess}>
                 <Page pageNumber={pageNumber}/>
             </Document>
             <p>Page {pageNumber} of {numPages}</p>

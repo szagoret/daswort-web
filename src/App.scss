@@ -6,3 +6,9 @@
 .ui.search > .results .result {
   padding: 0;
 }
+
+.pdf-file-viewer {
+  canvas {
+    width: 100% !important;
+  }
+}
