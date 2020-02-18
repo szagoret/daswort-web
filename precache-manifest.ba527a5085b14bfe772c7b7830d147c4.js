@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "7bab59355a9a53ed3b614c6498d468ed",
+    "revision": "f00eb51bdcba61fe97082c0b50f45ee6",
     "url": "/daswort-web/index.html"
   },
   {
@@ -8,8 +8,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/daswort-web/static/css/2.ef5c87ee.chunk.css"
   },
   {
-    "revision": "f94a11cc78a10613c544",
-    "url": "/daswort-web/static/css/main.b4accc88.chunk.css"
+    "revision": "7f6ba8922fa358227aa7",
+    "url": "/daswort-web/static/css/main.7f815ed7.chunk.css"
   },
   {
     "revision": "99eca5afc30dd8182090",
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/daswort-web/static/js/2.99c1040d.chunk.js.LICENSE"
   },
   {
-    "revision": "f94a11cc78a10613c544",
-    "url": "/daswort-web/static/js/main.168de700.chunk.js"
+    "revision": "7f6ba8922fa358227aa7",
+    "url": "/daswort-web/static/js/main.c6a894c4.chunk.js"
   },
   {
     "revision": "281612fffaa67f0c688f",

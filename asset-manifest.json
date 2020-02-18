@@ -1,12 +1,12 @@
 {
   "files": {
-    "main.css": "/daswort-web/static/css/main.b4accc88.chunk.css",
-    "main.js": "/daswort-web/static/js/main.168de700.chunk.js",
+    "main.css": "/daswort-web/static/css/main.7f815ed7.chunk.css",
+    "main.js": "/daswort-web/static/js/main.c6a894c4.chunk.js",
     "runtime-main.js": "/daswort-web/static/js/runtime-main.b3a159b7.js",
     "static/css/2.ef5c87ee.chunk.css": "/daswort-web/static/css/2.ef5c87ee.chunk.css",
     "static/js/2.99c1040d.chunk.js": "/daswort-web/static/js/2.99c1040d.chunk.js",
     "index.html": "/daswort-web/index.html",
-    "precache-manifest.f42dac07067dce114cbf68d473672f57.js": "/daswort-web/precache-manifest.f42dac07067dce114cbf68d473672f57.js",
+    "precache-manifest.ba527a5085b14bfe772c7b7830d147c4.js": "/daswort-web/precache-manifest.ba527a5085b14bfe772c7b7830d147c4.js",
     "service-worker.js": "/daswort-web/service-worker.js",
     "static/js/2.99c1040d.chunk.js.LICENSE": "/daswort-web/static/js/2.99c1040d.chunk.js.LICENSE",
     "static/media/semantic.min.css": "/daswort-web/static/media/outline-icons.ef60a4f6.woff"
@@ -15,7 +15,7 @@
     "static/js/runtime-main.b3a159b7.js",
     "static/css/2.ef5c87ee.chunk.css",
     "static/js/2.99c1040d.chunk.js",
-    "static/css/main.b4accc88.chunk.css",
-    "static/js/main.168de700.chunk.js"
+    "static/css/main.7f815ed7.chunk.css",
+    "static/js/main.c6a894c4.chunk.js"
   ]
 }
