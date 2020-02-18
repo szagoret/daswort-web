@@ -1,9 +1,10 @@
 import React, {useEffect, useState} from "react";
-import {Button, Confirm, Container, Grid, GridColumn, GridRow, Icon, Image, Segment, Table} from "semantic-ui-react";
+import {Button, Confirm, Container, Grid, GridColumn, GridRow, Icon, Segment, Table} from "semantic-ui-react";
 import {Link, useHistory, useParams} from "react-router-dom";
 import {deleteSongByIdApi, findSongById} from "../api/NotesApi";
 import Difficulty from "../components/Difficulty";
 import moment from "moment";
+import PDFDocument from "../components/PdfDocument";
 
 const SongPage = () => {
 
@@ -41,12 +42,7 @@ const SongPage = () => {
                 </GridRow>
                 <GridRow>
                     <GridColumn width={10}>
-                        <Segment>
-                            <Image src='https://react.semantic-ui.com/images/wireframe/paragraph.png'/>
-                            <Image src='https://react.semantic-ui.com/images/wireframe/paragraph.png'/>
-                            <Image src='https://react.semantic-ui.com/images/wireframe/paragraph.png'/>
-                            <Image src='https://react.semantic-ui.com/images/wireframe/paragraph.png'/>
-                        </Segment>
+                        <PDFDocument/>
                     </GridColumn>
                     <GridColumn width={5}>
                         <Segment>
@@ -91,7 +87,8 @@ const SongPage = () => {
                                         <Table.Cell>
                                             Date
                                         </Table.Cell>
-                                        <Table.Cell singleLine>{moment(song.createdAt).isValid() ? moment(song.createdAt).format('DD-MM-YYYY') : null}</Table.Cell>
+                                        <Table.Cell
+                                            singleLine>{moment(song.createdAt).isValid() ? moment(song.createdAt).format('DD-MM-YYYY') : null}</Table.Cell>
                                     </Table.Row>
                                     <Table.Row>
                                         <Table.Cell colSpan="2">

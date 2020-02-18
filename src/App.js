@@ -10,6 +10,9 @@ import store from './store/store';
 import {toast} from 'react-toastify';
 import {AdminPage, AudioPage, EventsPage, NotesPage, PhotosPage, SongListPage, SongPage, TheoryPage} from './pages';
 import SongForm from "./components/SongForm";
+import {pdfjs} from 'react-pdf';
+
+pdfjs["GlobalWorkerOptions"].workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
 toast.configure();
 export default () => {
