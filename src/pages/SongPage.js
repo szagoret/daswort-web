@@ -1,7 +1,9 @@
 import React, {useEffect, useState} from "react";
-import {Button, Container, Grid, GridColumn, GridRow, Icon, Image, Segment, Table} from "semantic-ui-react";
+import {Button, Confirm, Container, Grid, GridColumn, GridRow, Icon, Image, Segment, Table} from "semantic-ui-react";
 import {Link, useHistory, useParams} from "react-router-dom";
 import {deleteSongByIdApi, findSongById} from "../api/NotesApi";
+import Difficulty from "../components/Difficulty";
+import moment from "moment";
 
 const SongPage = () => {
 
@@ -9,7 +11,11 @@ const SongPage = () => {
 
     const history = useHistory();
 
-    const [song, setSong] = useState({});
+    const [song, setSong] = useState({
+        arrangement: {}, composition: {}, difficulty: {}, topics: []
+    });
+
+    const [isRemovePopupOpen, setIsRemovePopupOpen] = useState(false);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -59,15 +65,33 @@ const SongPage = () => {
                                     </Table.Row>
                                     <Table.Row>
                                         <Table.Cell>
-                                            Id
+                                            Author
                                         </Table.Cell>
-                                        <Table.Cell>{song.name}</Table.Cell>
+                                        <Table.Cell singleLine>{song.arrangement.firstName}{' '}{song.arrangement.lastName}</Table.Cell>
                                     </Table.Row>
                                     <Table.Row>
                                         <Table.Cell>
-                                            Category
+                                            Besetzung
                                         </Table.Cell>
-                                        <Table.Cell>{(song.category || {}).name}</Table.Cell>
+                                        <Table.Cell>{song.composition.name}</Table.Cell>
+                                    </Table.Row>
+                                    <Table.Row>
+                                        <Table.Cell>
+                                            Schwlerigkeitsgrad
+                                        </Table.Cell>
+                                        <Table.Cell><Difficulty>{song.difficulty.name}</Difficulty></Table.Cell>
+                                    </Table.Row>
+                                    <Table.Row>
+                                        <Table.Cell>
+                                            Thema
+                                        </Table.Cell>
+                                        <Table.Cell>{song.topics.map(topic => topic.name).join(" , ")}</Table.Cell>
+                                    </Table.Row>
+                                    <Table.Row>
+                                        <Table.Cell>
+                                            Date
+                                        </Table.Cell>
+                                        <Table.Cell singleLine>{moment(song.createdAt).isValid() ? moment(song.createdAt).format('DD-MM-YYYY') : null}</Table.Cell>
                                     </Table.Row>
                                     <Table.Row>
                                         <Table.Cell colSpan="2">
@@ -75,7 +99,7 @@ const SongPage = () => {
                                                 <Icon name='edit outline'/>
                                                 Edit
                                             </Button>
-                                            <Button basic color='red' onClick={removeSong}>
+                                            <Button basic color='red' onClick={() => setIsRemovePopupOpen(true)}>
                                                 <Icon name='trash alternate outline'/>
                                                 Remove
                                             </Button>
@@ -87,6 +111,11 @@ const SongPage = () => {
                     </GridColumn>
                 </GridRow>
             </Grid>
+            <Confirm
+                open={isRemovePopupOpen}
+                onCancel={() => setIsRemovePopupOpen(false)}
+                onConfirm={() => removeSong()}
+            />
         </Container>
     );
 };
