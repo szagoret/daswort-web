@@ -2,6 +2,7 @@ import React from "react";
 import {Icon, Pagination, Table} from "semantic-ui-react";
 import Difficulty from "./Difficulty";
 import {Link} from "react-router-dom";
+import moment from "moment";
 
 export default ({songs, page, totalItems, pageSize, onPageChange, sortedColumn, direction, onSorting}) => {
 
@@ -15,7 +16,7 @@ export default ({songs, page, totalItems, pageSize, onPageChange, sortedColumn, 
         {name: "Besetzung", prop: 'composition', sortable: true},
         {name: "Schwlerigkeitsgrad", prop: 'difficulty', sortable: true},
         {name: "Thema", prop: 'topics', sortable: false},
-        {name: "Date", prop: 'createdOn', sortable: true}];
+        {name: "Date", prop: 'createdAt', sortable: true}];
 
     const handleSort = (prop) => {
         const isColumnSortable = (columns.find(column => column.prop === prop) || {}).sortable;
@@ -40,18 +41,18 @@ export default ({songs, page, totalItems, pageSize, onPageChange, sortedColumn, 
              composition,
              difficulty,
              topics,
-             date
+             createdAt
          }, i) =>
             (
                 <Table.Row key={i}>
                     <Table.Cell style={{fontSize: '1.3em'}}><Link to={`/song/${id}`}>{name}</Link></Table.Cell>
-                    <Table.Cell>{(arrangement || {}).firstName}{' '}{(arrangement || {}).lastName}</Table.Cell>
-                    <Table.Cell>{(composition || {}).name}</Table.Cell>
+                    <Table.Cell singleLine>{arrangement.firstName}{' '}{arrangement.lastName}</Table.Cell>
+                    <Table.Cell>{composition.name}</Table.Cell>
                     <Table.Cell>
-                        <Difficulty>{(difficulty || {}).name}</Difficulty>
+                        <Difficulty>{difficulty.name}</Difficulty>
                     </Table.Cell>
                     <Table.Cell>{topics.map(topic => topic.name).join(" , ")}</Table.Cell>
-                    <Table.Cell>Sep. 2013</Table.Cell>
+                    <Table.Cell singleLine>{moment(createdAt).isValid() ? moment(createdAt).format('DD-MM-YYYY') : null}</Table.Cell>
                 </Table.Row>
             )
     );

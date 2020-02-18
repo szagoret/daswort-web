@@ -1,10 +1,16 @@
 import React, {useEffect, useState} from "react";
-import {Button, Container, Dropdown, Form, Input, Segment} from "semantic-ui-react";
-import {addSongApi, getSongFiltersApi, updateSongApi} from "../api/NotesApi";
+import {Button, Container, Dropdown, Form, Icon, Input, Segment} from "semantic-ui-react";
+import {addSongApi, findSongById, getSongFiltersApi, updateSongApi} from "../api/NotesApi";
 import {string} from "prop-types";
+import {toast} from 'react-toastify';
+import {isNotEmpty} from "../utils/StringUtils";
+import {useParams} from "react-router-dom";
 
 
-const SongForm = ({songId}) => {
+const SongForm = () => {
+
+    const {songId} = useParams();
+
     const [filtersOptions, setFilterOptions] = useState({
         topics: [],
         authors: [],
@@ -13,10 +19,22 @@ const SongForm = ({songId}) => {
         instruments: []
     });
 
-    const [id, setId] = useState(songId);
+    const [id, setId] = useState();
 
     useEffect(() => {
-
+        if (songId) {
+            findSongById(songId).then(({data}) => {
+                setFormValue({
+                    name: data.name,
+                    topicsIds: data.topics.map(topic => topic.id),
+                    arrangementId: data.arrangement.id,
+                    compositionId: data.composition.id,
+                    difficultyId: data.difficulty.id,
+                    instrumentsIds: data.instruments.map(instrument => instrument.id),
+                });
+            });
+            setId(songId);
+        }
     }, [songId]);
 
     useEffect(() => {
@@ -25,7 +43,7 @@ const SongForm = ({songId}) => {
             setFilterOptions(result.data);
         };
 
-        fetchData().catch();
+        fetchData().catch(reason => toast.error('Error'));
     }, []);
 
     const [formValue, setFormValue] = useState({
@@ -37,23 +55,24 @@ const SongForm = ({songId}) => {
         instrumentsIds: []
     });
 
-    const getFieldSelectOptions = (fieldName) => {
-        return filtersOptions[fieldName].map(option => ({
-            key: option.id,
-            value: option.id,
-            text: option.name
-        }))
-    };
+    const getFieldSelectOptions = fieldName => filtersOptions[fieldName].map(option => ({
+        key: option.id,
+        value: option.id,
+        text: option.name
+    }));
 
     const setValue = (keyValue) => {
         setFormValue({...formValue, ...keyValue});
     };
 
     const createSong = () => {
-        addSongApi(formValue).then(result => setId(result.data.id));
+        addSongApi(formValue).then(result => {
+            setId(result.data.id);
+            toast(`Erstellt: ${result.data.name}`, {pauseOnFocusLoss: true});
+        });
     };
     const updateSong = () => {
-        updateSongApi(songId, formValue).then();
+        updateSongApi(id, formValue).then(value => toast("Aktualisiert", {pauseOnFocusLoss: true}));
     };
 
     return (
@@ -62,7 +81,7 @@ const SongForm = ({songId}) => {
                 <Form>
                     <Form.Field required>
                         <label>Name</label>
-                        <Input placeholder='Name' onChange={(e, data) => setValue({name: data.value})}/>
+                        <Input placeholder='Name' value={formValue.name} onChange={(e, data) => setValue({name: data.value})}/>
                     </Form.Field>
                     <Form.Group widths='equal'>
                         <Form.Field>
@@ -129,8 +148,12 @@ const SongForm = ({songId}) => {
                             />
                         </Form.Field>
                     </Form.Group>
-                    {id ? <Button color='green' onClick={updateSong}>Update song</Button> :
-                        <Button color='teal' onClick={createSong}>Create Song</Button>}
+                    {id ? <Button basic color='blue' disabled={!isNotEmpty(formValue.name)} onClick={updateSong}>
+                            <Icon name='edit outline'/>Update song</Button> :
+                        <Button color='teal' onClick={createSong} disabled={!isNotEmpty(formValue.name)}>
+                            <Icon name='add circle'/>
+                            Create Song
+                        </Button>}
                 </Form>
             </Segment>
         </Container>

@@ -6,6 +6,10 @@ export const get = (url, data) => {
     const config = getTokenHeader();
     return axios.get(url, {...config, ...data}).catch(handleError);
 };
+export const deleteApi = (url, data) => {
+    const config = getTokenHeader();
+    return axios.delete(url, {...config, ...data}).catch(handleError);
+};
 
 export function post(url, data) {
     return axios.post(url, data, getTokenHeader()).catch(handleError);

@@ -1,20 +1,30 @@
 import React, {useEffect, useState} from "react";
-import {Container, Grid, GridColumn, GridRow, Icon, Image, Segment, Table} from "semantic-ui-react";
-import {Link} from "react-router-dom";
-import {findSongById} from "../api/NotesApi";
+import {Button, Container, Grid, GridColumn, GridRow, Icon, Image, Segment, Table} from "semantic-ui-react";
+import {Link, useHistory, useParams} from "react-router-dom";
+import {deleteSongByIdApi, findSongById} from "../api/NotesApi";
 
-const SongPage = (props) => {
+const SongPage = () => {
+
+    const {songId} = useParams();
+
+    const history = useHistory();
 
     const [song, setSong] = useState({});
 
     useEffect(() => {
         const fetchData = async () => {
-            const {data} = await findSongById(props.match.params.id);
+            const {data} = await findSongById(songId);
             setSong(data);
         };
-        fetchData();
-    }, []);
+        fetchData().catch();
+    }, [songId]);
 
+    const editSong = () => {
+        history.push(`/song/${songId}/edit`);
+    };
+    const removeSong = () => {
+        deleteSongByIdApi(songId).then(r => history.push(`/`));
+    };
     return (
         <Container>
             <Grid>
@@ -58,6 +68,18 @@ const SongPage = (props) => {
                                             Category
                                         </Table.Cell>
                                         <Table.Cell>{(song.category || {}).name}</Table.Cell>
+                                    </Table.Row>
+                                    <Table.Row>
+                                        <Table.Cell colSpan="2">
+                                            <Button basic color='blue' onClick={editSong}>
+                                                <Icon name='edit outline'/>
+                                                Edit
+                                            </Button>
+                                            <Button basic color='red' onClick={removeSong}>
+                                                <Icon name='trash alternate outline'/>
+                                                Remove
+                                            </Button>
+                                        </Table.Cell>
                                     </Table.Row>
                                 </Table.Body>
                             </Table>
