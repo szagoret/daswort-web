@@ -34,7 +34,7 @@ const SongPage = () => {
     };
     return (
         <Container>
-            <Grid stackable>
+            <Grid doubling>
                 <GridRow>
                     <GridColumn>
                         <Link to="/"> <Icon name="arrow left"/> Back to home page</Link>

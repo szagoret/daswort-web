@@ -1,15 +1,18 @@
 import React, {useEffect, useState} from "react";
-import {Button, Container, Dropdown, Form, Icon, Input, Segment} from "semantic-ui-react";
+import {Button, Container, Dropdown, Form, Icon, Label, Segment} from "semantic-ui-react";
 import {addSongApi, findSongById, getSongFiltersApi, updateSongApi} from "../api/NotesApi";
 import {string} from "prop-types";
 import {toast} from 'react-toastify';
 import {isNotEmpty} from "../utils/StringUtils";
 import {useParams} from "react-router-dom";
+import SongFileUpload from "./SongFileUpload";
 
 
 const SongForm = () => {
 
     const {songId} = useParams();
+
+    const [isSongUpdating, setIsSongUpdating] = useState(false);
 
     const [filtersOptions, setFilterOptions] = useState({
         topics: [],
@@ -20,6 +23,8 @@ const SongForm = () => {
     });
 
     const [id, setId] = useState();
+
+    const [files, setFiles] = useState([]);
 
     useEffect(() => {
         if (songId) {
@@ -32,6 +37,7 @@ const SongForm = () => {
                     difficultyId: data.difficulty.id,
                     instrumentsIds: data.instruments.map(instrument => instrument.id),
                 });
+                setFiles([...data.files])
             });
             setId(songId);
         }
@@ -66,23 +72,37 @@ const SongForm = () => {
     };
 
     const createSong = () => {
+        setIsSongUpdating(true);
         addSongApi(formValue).then(result => {
             setId(result.data.id);
+            setIsSongUpdating(false);
             toast(`Erstellt: ${result.data.name}`, {pauseOnFocusLoss: true});
         });
     };
     const updateSong = () => {
-        updateSongApi(id, formValue).then(value => toast("Aktualisiert", {pauseOnFocusLoss: true}));
+        setIsSongUpdating(true);
+        updateSongApi(id, formValue).then(value => {
+            setIsSongUpdating(false);
+            toast("Aktualisiert", {pauseOnFocusLoss: true});
+        });
     };
 
     return (
         <Container>
             <Segment basic>
                 <Form>
-                    <Form.Field required>
-                        <label>Name</label>
-                        <Input placeholder='Name' value={formValue.name} onChange={(e, data) => setValue({name: data.value})}/>
-                    </Form.Field>
+                    {id &&
+                    <Label style={{marginBottom: '2rem'}} basic color="blue">
+                        {id}
+                    </Label>
+                    }
+                    <Form.Group>
+                        <Form.Input label="Name"
+                                    placeholder='Name'
+                                    width={5}
+                                    value={formValue.name}
+                                    onChange={(e, data) => setValue({name: data.value})}/>
+                    </Form.Group>
                     <Form.Group widths='equal'>
                         <Form.Field>
                             <label>Author</label>
@@ -148,12 +168,19 @@ const SongForm = () => {
                             />
                         </Form.Field>
                     </Form.Group>
-                    {id ? <Button basic color='blue' disabled={!isNotEmpty(formValue.name)} onClick={updateSong}>
-                            <Icon name='edit outline'/>Update song</Button> :
-                        <Button color='teal' onClick={createSong} disabled={!isNotEmpty(formValue.name)}>
-                            <Icon name='add circle'/>
-                            Create Song
-                        </Button>}
+
+
+                    <Segment basic>
+                        {id ? <Button basic color='blue' loading={isSongUpdating} disabled={!isNotEmpty(formValue.name)} onClick={updateSong}>
+                                <Icon name='edit outline'/>Update song</Button> :
+                            <Button color='teal' loading={isSongUpdating} onClick={createSong} disabled={!isNotEmpty(formValue.name)}>
+                                <Icon name='add circle'/>
+                                Create Song
+                            </Button>}
+                    </Segment>
+                    {id &&
+                    <SongFileUpload songFiles={files}/>
+                    }
                 </Form>
             </Segment>
         </Container>
